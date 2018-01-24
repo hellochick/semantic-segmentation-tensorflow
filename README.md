@@ -37,7 +37,8 @@ preds = model.forward(sess) # Get prediction
 
 |Input Image| PSPNet | FCN |  
 :----------:|:------:|:----:
-|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_2.jpg)|
+|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_1.jpg)|  
+|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_2.jpg)|
 
 
 
