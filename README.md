@@ -39,5 +39,32 @@ preds = model.forward(sess) # Get prediction
 |![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_1.jpg)|  
 |![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_2.jpg)|
 
+## Citation
+    @inproceedings{zhao2017pspnet,
+      author = {Hengshuang Zhao and
+                Jianping Shi and
+                Xiaojuan Qi and
+                Xiaogang Wang and
+                Jiaya Jia},
+      title = {Pyramid Scene Parsing Network},
+      booktitle = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+      year = {2017}
+    }
+Scene Parsing through ADE20K Dataset. B. Zhou, H. Zhao, X. Puig, S. Fidler, A. Barriuso and A. Torralba. Computer Vision and Pattern Recognition (CVPR), 2017. (http://people.csail.mit.edu/bzhou/publication/scene-parse-camera-ready.pdf)
 
+    @inproceedings{zhou2017scene,
+        title={Scene Parsing through ADE20K Dataset},
+        author={Zhou, Bolei and Zhao, Hang and Puig, Xavier and Fidler, Sanja and Barriuso, Adela and Torralba, Antonio},
+        booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+        year={2017}
+    }
+    
+Semantic Understanding of Scenes through ADE20K Dataset. B. Zhou, H. Zhao, X. Puig, S. Fidler, A. Barriuso and A. Torralba. arXiv:1608.05442. (https://arxiv.org/pdf/1608.05442.pdf)
 
+    @article{zhou2016semantic,
+      title={Semantic understanding of scenes through the ade20k dataset},
+      author={Zhou, Bolei and Zhao, Hang and Puig, Xavier and Fidler, Sanja and Barriuso, Adela and Torralba, Antonio},
+      journal={arXiv preprint arXiv:1608.05442},
+      year={2016}
+    }
+    
