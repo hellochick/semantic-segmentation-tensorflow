@@ -7,17 +7,24 @@ from scipy import misc
 IMG_MEAN = np.array((103.939, 116.779, 123.68), dtype=np.float32)
 matfn = './utils/color150.mat'
 
-def read_labelcolours(matfn):
+def read_labelcolours(matfn, append_background=False):
     mat = sio.loadmat(matfn)
     color_table = mat['colors']
     shape = color_table.shape
-    color_list = [(255, 255, 255)] + [tuple(color_table[i]) for i in range(shape[0])]
-    
+
+    if append_background:
+        color_list = [(255, 255, 255)] + [tuple(color_table[i]) for i in range(shape[0])]
+    else:
+        color_list = [tuple(color_table[i]) for i in range(shape[0])]
+
     return color_list
 
 def decode_labels(mask, img_shape, num_classes):
-    color_table = read_labelcolours(matfn)
-
+    if num_classes == 151:
+        color_table = read_labelcolours(matfn, append_background=True)
+    else:
+        color_table = read_labelcolours(matfn)
+        
     color_mat = tf.constant(color_table, dtype=tf.float32)
     onehot_output = tf.one_hot(mask, depth=num_classes)
     onehot_output = tf.reshape(onehot_output, (-1, num_classes))
@@ -47,17 +54,25 @@ def load_img(img_path):
 
     return img, filename
 
-def preprocess(img, input_size):
+def preprocess(img, input_size, model):
     # Convert RGB to BGR
     img_r, img_g, img_b = tf.split(axis=2, num_or_size_splits=3, value=img)
     img = tf.cast(tf.concat(axis=2, values=[img_b, img_g, img_r]), dtype=tf.float32)
         
     # Extract mean.
     img -= IMG_MEAN
-        
-    img = tf.expand_dims(img, dim=0)
-    img = tf.image.resize_bilinear(img, input_size)
 
-    return img
+    if model == 'fcn-8s':
+        img = tf.expand_dims(img, dim=0)
+        output = tf.image.resize_bilinear(img, input_size)
+
+        return output
+    elif model == 'pspnet50':
+        shape = tf.shape(img)
+        h, w = (tf.maximum(input_size[0], shape[0]), tf.maximum(input_size[1], shape[1]))
+        pad_img = tf.image.pad_to_bounding_box(img, 0, 0, h, w)
+        output = tf.expand_dims(pad_img, dim=0)
+       
+        return output, h, w, shape
 
 

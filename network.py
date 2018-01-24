@@ -66,8 +66,8 @@ class Network(object):
                     try:
                         if 'bn' in op_name:
                             param_name = BN_param_map[param_name]
+                            data = np.squeeze(data)
 
-                        print('restore {} - {}'.format(op_name, param_name))
                         var = tf.get_variable(param_name)
                         session.run(var.assign(data))
                     except ValueError:

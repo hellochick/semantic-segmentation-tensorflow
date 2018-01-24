@@ -9,11 +9,12 @@ import tensorflow as tf
 import numpy as np
 from scipy import misc
 
-from model import FCN8s
+from model import FCN8s, PSPNet50
 from tools import *
 
 save_dir = './output/'
-model_path = './model/fcn_iter_160000.npy'
+model_path = {'pspnet': './model/pspnet50.npy',
+              'fcn': './model/fcn.npy'}
 
 def get_arguments():
     parser = argparse.ArgumentParser(description="Reproduced PSPNet")
@@ -22,13 +23,21 @@ def get_arguments():
                         required=True)
     parser.add_argument("--save-dir", type=str, default=save_dir,
                         help="Path to save output.")
+    parser.add_argument("--model", type=str, default='',
+                        help="pspnet or fcn",
+                        choices=['pspnet', 'fcn'],
+                        required=True)
 
     return parser.parse_args()
 
 def main():
     args = get_arguments()
 
-    model = FCN8s()
+    if args.model == 'pspnet':
+        model = PSPNet50()
+    elif args.model == 'fcn':
+        model = FCN8s()
+
     model.read_input(args.img_path)
 
     # Init tf Session
@@ -39,13 +48,13 @@ def main():
 
     sess.run(init)
 
-    model.load(model_path, sess)
+    model.load(model_path[args.model], sess)
 
     preds = model.forward(sess)
       
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
-    misc.imsave(args.save_dir + model.filename, preds[0])
+    misc.imsave(args.save_dir + args.model + '_' + model.img_name, preds[0])
     
 if __name__ == '__main__':
     main()
