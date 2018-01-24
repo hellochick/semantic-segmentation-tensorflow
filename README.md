@@ -19,7 +19,6 @@ python inference.py --img-path /Path/To/Image --dataset pspnet or fcn
 ### Import module in your code:
 ```python
 from model import FCN8s, PSPNet50
-from tools import *
 
 model = PSPNet50() # model = FCN8s()
 
