@@ -63,10 +63,11 @@ def preprocess(img, input_size, model):
     img -= IMG_MEAN
 
     if model == 'fcn-8s':
+        shape = tf.shape(img)
         img = tf.expand_dims(img, dim=0)
         output = tf.image.resize_bilinear(img, input_size)
 
-        return output
+        return output, shape
     elif model == 'pspnet50':
         shape = tf.shape(img)
         h, w = (tf.maximum(input_size[0], shape[0]), tf.maximum(input_size[1], shape[1]))

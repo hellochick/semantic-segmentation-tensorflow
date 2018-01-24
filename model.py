@@ -8,7 +8,7 @@ class FCN8s(Network):
         self.input_size = input_size
     
         self.x = tf.placeholder(dtype=tf.float32, shape=[None, None, 3])
-        self.img_tf = preprocess(self.x, self.input_size, 'fcn-8s')
+        self.img_tf, self.shape = preprocess(self.x, self.input_size, 'fcn-8s')
         
         super().__init__({'data': self.img_tf}, num_classes, is_training)
 
@@ -79,8 +79,9 @@ class FCN8s(Network):
              .crop(31, name='score'))
 
         score = self.layers['score']
+        score = tf.image.resize_bilinear(score, size=self.shape[0:2], align_corners=True)
         score = tf.argmax(score, axis=3)
-        self.pred = decode_labels(score, self.input_size, num_classes)
+        self.pred = decode_labels(score, self.shape[0:2], num_classes)
 
     def read_input(self, img_path):
         self.img, self.img_name = load_img(img_path)

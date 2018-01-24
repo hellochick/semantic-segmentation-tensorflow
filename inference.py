@@ -10,7 +10,6 @@ import numpy as np
 from scipy import misc
 
 from model import FCN8s, PSPNet50
-from tools import *
 
 save_dir = './output/'
 model_path = {'pspnet': './model/pspnet50.npy',
