@@ -408,11 +408,13 @@ class ENet(object):
     def read_input(self):
         ---------- nothing ---------
 
-    def forward(self, sess, img_array):
-        suppose img_array = h x w x 3
-        self.batch_img[0] = img_array
-
-        batch_feed_dict = self.create_feed_dict(imgs_batch=batch_imgs,
+    def forward(self, sess, img):
+        # suppose img shape = h x w x 3
+        img = cv2.resize(img, (self.img_width, self.img_height))
+        img = img - self.img_mean
+        self.batch_imgs[0] = img
+        
+        batch_feed_dict = self.create_feed_dict(imgs_batch=self.batch_imgs,
                     early_drop_prob=0.0, late_drop_prob=0.0)
         pred = sess.run(self.logits, feed_dict=batch_feed_dict)
 
