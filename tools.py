@@ -6,6 +6,20 @@ from scipy import misc
 
 IMG_MEAN = np.array((103.939, 116.779, 123.68), dtype=np.float32)
 matfn = './utils/color150.mat'
+label_colours = [[128, 64, 128], [244, 35, 231], [69, 69, 69]
+                # 0 = road, 1 = sidewalk, 2 = building
+                ,[102, 102, 156], [190, 153, 153], [153, 153, 153]
+                # 3 = wall, 4 = fence, 5 = pole
+                ,[250, 170, 29], [219, 219, 0], [106, 142, 35]
+                # 6 = traffic light, 7 = traffic sign, 8 = vegetation
+                ,[152, 250, 152], [69, 129, 180], [219, 19, 60]
+                # 9 = terrain, 10 = sky, 11 = person
+                ,[255, 0, 0], [0, 0, 142], [0, 0, 69]
+                # 12 = rider, 13 = car, 14 = truck
+                ,[0, 60, 100], [0, 79, 100], [0, 0, 230]
+                # 15 = bus, 16 = train, 17 = motocycle
+                ,[119, 10, 32]]
+                # 18 = bicycle
 
 def read_labelcolours(matfn, append_background=False):
     mat = sio.loadmat(matfn)
@@ -20,11 +34,14 @@ def read_labelcolours(matfn, append_background=False):
     return color_list
 
 def decode_labels(mask, img_shape, num_classes):
-    if num_classes == 151:
+    if num_classes == 151: # ade20k including background
         color_table = read_labelcolours(matfn, append_background=True)
-    else:
+    elif num_classes == 150: # ade20k excluding background
         color_table = read_labelcolours(matfn)
-        
+    elif num_classes == 20: # cityscapes includin background
+        color_table = label_colours + [[255, 255, 255]]
+        color_table = [tuple(color_table[i]) for i in range(len(color_table))]
+
     color_mat = tf.constant(color_table, dtype=tf.float32)
     onehot_output = tf.one_hot(mask, depth=num_classes)
     onehot_output = tf.reshape(onehot_output, (-1, num_classes))

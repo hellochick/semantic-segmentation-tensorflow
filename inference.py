@@ -9,11 +9,12 @@ import tensorflow as tf
 import numpy as np
 from scipy import misc
 
-from model import FCN8s, PSPNet50
+from model import FCN8s, PSPNet50, ENet
 
 save_dir = './output/'
 model_path = {'pspnet': './model/pspnet50.npy',
-              'fcn': './model/fcn.npy'}
+              'fcn': './model/fcn.npy',
+              'enet': './model/cityscapes/enet.ckpt'}
 
 def get_arguments():
     parser = argparse.ArgumentParser(description="Reproduced PSPNet")
@@ -24,7 +25,7 @@ def get_arguments():
                         help="Path to save output.")
     parser.add_argument("--model", type=str, default='',
                         help="pspnet or fcn",
-                        choices=['pspnet', 'fcn'],
+                        choices=['pspnet', 'fcn', 'enet'],
                         required=True)
 
     return parser.parse_args()
@@ -36,6 +37,8 @@ def main():
         model = PSPNet50()
     elif args.model == 'fcn':
         model = FCN8s()
+    elif args.model == 'enet':
+        model = ENet()
 
     model.read_input(args.img_path)
 
