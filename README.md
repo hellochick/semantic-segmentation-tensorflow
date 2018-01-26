@@ -6,7 +6,7 @@ We re-produce the inference phase of [PSPNet](https://github.com/hszhao/PSPNet) 
 ## Models
 1. PSPNet
 2. FCN
-3. ENet
+3. ENet (from [freg856](https://github.com/fregu856/segmentation))  
 ...to be continue
 
 ## Install
