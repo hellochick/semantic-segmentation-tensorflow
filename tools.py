@@ -41,7 +41,9 @@ def decode_labels(mask, img_shape, num_classes):
     elif num_classes == 20: # cityscapes includin background
         color_table = label_colours + [[255, 255, 255]]
         color_table = [tuple(color_table[i]) for i in range(len(color_table))]
-
+    elif num_classes == 19:
+        color_table = label_colours
+        
     color_mat = tf.constant(color_table, dtype=tf.float32)
     onehot_output = tf.one_hot(mask, depth=num_classes)
     onehot_output = tf.reshape(onehot_output, (-1, num_classes))
@@ -92,5 +94,12 @@ def preprocess(img, input_size, model):
         output = tf.expand_dims(pad_img, dim=0)
        
         return output, h, w, shape
+
+    elif model == 'icnet':
+        img = tf.expand_dims(img, dim=0)
+        output = tf.image.resize_bilinear(img, input_size)
+
+        return output, input_size
+
 
 
