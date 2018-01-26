@@ -3,6 +3,12 @@ This is a Tensorflow implementation of semantic segmentation models on [MIT ADE2
   
 We re-produce the inference phase of [PSPNet](https://github.com/hszhao/PSPNet) and [FCN](https://github.com/CSAILVision/sceneparsing) by transforming the released pre-trained weights into tensorflow format, and apply on handcraft models.
 
+## Models
+1. PSPNet
+2. FCN
+3. ENet
+...to be continue
+
 ## Install
 Get corresponding transformed pre-trained weights, and put into `model` directory:   
 
@@ -33,11 +39,16 @@ preds = model.forward(sess) # Get prediction
 ```
 
 ## Results
-
+### ade20k
 |Input Image| PSPNet | FCN |  
 :----------:|:------:|:----:
 |![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_1.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_1.jpg)|  
 |![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_2.jpg)|
+
+### cityscapes
+|Input Image| ENet |
+:----------:|:------:|
+|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png)|
 
 ## Citation
     @inproceedings{zhao2017pspnet,
