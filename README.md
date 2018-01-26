@@ -6,15 +6,16 @@ We re-produce the inference phase of [PSPNet](https://github.com/hszhao/PSPNet) 
 ## Models
 1. PSPNet
 2. FCN
-3. ENet (from [freg856](https://github.com/fregu856/segmentation))  
+3. ENet (from [freg856](https://github.com/fregu856/segmentation)) 
+4. ICNet
 ...to be continue
 
 ## Install
 Get corresponding transformed pre-trained weights, and put into `model` directory:   
 
- PSPNet       |FCN           |
-|:-----------:|:-------------:|
-|[Google drive](https://drive.google.com/file/d/1WElbk7ogK3e3-yEDP0yXfy4sCpbYL4yP/view?usp=sharing) | [Google drive](https://drive.google.com/file/d/17lcRDt-aJrr4fMom8cWJjAPhoGd911FS/view?usp=sharing)|
+ PSPNet       |FCN           |ICNet
+|:-----------:|:-------------:|:------:|
+|[Google drive](https://drive.google.com/file/d/1WElbk7ogK3e3-yEDP0yXfy4sCpbYL4yP/view?usp=sharing) | [Google drive](https://drive.google.com/file/d/17lcRDt-aJrr4fMom8cWJjAPhoGd911FS/view?usp=sharing)| [Google drive](https://drive.google.com/file/d/1Vg8NFk_k6Me7WSdXnDcDoFa4Pd0hl8tn/view?usp=sharing)|
 
 ## Inference
 Run following command:
@@ -46,9 +47,9 @@ preds = model.forward(sess) # Get prediction
 |![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/pspnet_indoor_2.jpg)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/fcn_indoor_2.jpg)|
 
 ### cityscapes
-|Input Image| ENet |
-:----------:|:------:|
-|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png)|
+|Input Image|ICNet| ENet |
+:----------:|:------:|:-----:|
+|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/icnet_outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png)|
 
 ## Citation
     @inproceedings{zhao2017pspnet,
