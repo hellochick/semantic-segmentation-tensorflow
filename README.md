@@ -1,14 +1,14 @@
 # semantic-segmentation-tensorflow
-This is a Tensorflow implementation of semantic segmentation models on [MIT ADE20K scene parsing dataset](https://github.com/hangzhaomit/semantic-segmentation-pytorch).   
-  
-We re-produce the inference phase of [PSPNet](https://github.com/hszhao/PSPNet) and [FCN](https://github.com/CSAILVision/sceneparsing) by transforming the released pre-trained weights into tensorflow format, and apply on handcraft models.
+This is a Tensorflow implementation of semantic segmentation models on [MIT ADE20K scene parsing dataset](https://github.com/hangzhaomit/semantic-segmentation-pytorch) and [Cityscapes dataset](https://www.cityscapes-dataset.com/benchmarks/)
+  
+We re-produce the inference phase of several models, including [PSPNet](https://github.com/hszhao/PSPNet), [FCN](https://github.com/CSAILVision/sceneparsing), and [ICNet](https://github.com/hszhao/ICNet) by transforming the released pre-trained weights into tensorflow format, and apply on handcraft models. Also, we refer to ENet from [freg856 github](https://github.com/fregu856/segmentation). Still working on task integrated.
 
 ## Models
 1. PSPNet
 2. FCN
-3. ENet (from [freg856](https://github.com/fregu856/segmentation)) 
-4. ICNet
-...to be continue
+3. ENet 
+4. ICNet  
+### ...to be continue
 
 ## Install
 Get corresponding transformed pre-trained weights, and put into `model` directory:   
@@ -20,22 +20,26 @@ Get corresponding transformed pre-trained weights, and put into `model` director
 ## Inference
 Run following command:
 ```
-python inference.py --img-path /Path/To/Image --dataset pspnet or fcn
+python inference.py --img-path /Path/To/Image --dataset Model_Type
+```
+### Arg list
+```
+--dataset - choose from "icnet"/"pspnet"/"fcn"/"enet"  
 ```
 
 ### Import module in your code:
 ```python
-from model import FCN8s, PSPNet50
+from model import FCN8s, PSPNet50, ICNet, ENet
 
-model = PSPNet50() # model = FCN8s()
+model = PSPNet50() # or another model
 
-model.read_input(args.img_path)  # read image data from path
+model.read_input(img_path)  # read image data from path
 
 sess = tf.Session(config=config)
 init = tf.global_variables_initializer()
 sess.run(init)
 
-model.load(model_path[args.model], sess)  # load pretrained model
+model.load(model_path, sess)  # load pretrained model
 preds = model.forward(sess) # Get prediction 
 ```
 
@@ -49,7 +53,7 @@ preds = model.forward(sess) # Get prediction
 ### cityscapes
 |Input Image|ICNet| ENet |
 :----------:|:------:|:-----:|
-|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/icnet_outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png)|
+|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png, width="20%")|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/icnet_outdoor_1.png, width="20%")|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png, width="20%")|
 
 ## Citation
     @inproceedings{zhao2017pspnet,
