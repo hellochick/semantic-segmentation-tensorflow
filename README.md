@@ -53,7 +53,7 @@ preds = model.forward(sess) # Get prediction
 ### cityscapes
 |Input Image|ICNet| ENet |
 :----------:|:------:|:-----:|
-|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png, width="20%")|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/icnet_outdoor_1.png, width="20%")|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png, width="20%")|
+|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/input/outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/icnet_outdoor_1.png)|![](https://github.com/hellochick/semantic-segmentation-tensorflow/blob/master/output/enet_outdoor_1.png)|
 
 ## Citation
     @inproceedings{zhao2017pspnet,
