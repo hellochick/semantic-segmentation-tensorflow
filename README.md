@@ -13,7 +13,7 @@ We re-produce the inference phase of several models, including [PSPNet](https://
 ## Install
 Get corresponding transformed pre-trained weights, and put into `model` directory:   
 
- PSPNet       |FCN           |ICNet
+ FCN       |PSPNet           |ICNet
 |:-----------:|:-------------:|:------:|
 |[Google drive](https://drive.google.com/file/d/1WElbk7ogK3e3-yEDP0yXfy4sCpbYL4yP/view?usp=sharing) | [Google drive](https://drive.google.com/file/d/17lcRDt-aJrr4fMom8cWJjAPhoGd911FS/view?usp=sharing)| [Google drive](https://drive.google.com/file/d/1Vg8NFk_k6Me7WSdXnDcDoFa4Pd0hl8tn/view?usp=sharing)|
 
