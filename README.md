@@ -4,10 +4,11 @@ This is a Tensorflow implementation of semantic segmentation models on [MIT ADE2
 We re-produce the inference phase of several models, including [PSPNet](https://github.com/hszhao/PSPNet), [FCN](https://github.com/CSAILVision/sceneparsing), and [ICNet](https://github.com/hszhao/ICNet) by transforming the released pre-trained weights into tensorflow format, and apply on handcraft models. Also, we refer to ENet from [freg856 github](https://github.com/fregu856/segmentation). Still working on task integrated.
 
 ## Models
-1. PSPNet
+1. [PSPNet](https://github.com/hellochick/PSPNet-tensorflow)
 2. FCN
 3. ENet 
-4. ICNet  
+4. [ICNet](https://github.com/hellochick/ICNet-tensorflow)
+
 ### ...to be continue
 
 ## Install
