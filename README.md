@@ -25,7 +25,7 @@ python inference.py --img-path /Path/To/Image --dataset Model_Type
 ```
 ### Arg list
 ```
---dataset - choose from "icnet"/"pspnet"/"fcn"/"enet"  
+--model - choose from "icnet"/"pspnet"/"fcn"/"enet"  
 ```
 
 ### Import module in your code:
