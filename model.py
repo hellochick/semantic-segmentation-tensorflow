@@ -895,7 +895,7 @@ class ENet(object):
         weight_decay = self.wd*tf.nn.l2_loss(variable)
         tf.add_to_collection(loss_category, weight_decay)
 
-        return variabl
+        return variable
 
 class ICNet(Network):
     def __init__(self, is_training=False, num_classes=19, input_size=[1024, 2048]):
