@@ -8,11 +8,11 @@ import cv2
 class FCN8s(Network):
     def __init__(self, is_training=False, num_classes=151, input_size=[384, 384]):
         self.input_size = input_size
-    
+
         self.x = tf.placeholder(dtype=tf.float32, shape=[None, None, 3])
         self.img_tf, self.shape = preprocess(self.x, self.input_size, 'fcn-8s')
-        
-        super().__init__({'data': self.img_tf}, num_classes, is_training)
+
+        super(FCN8s, self).__init__({'data': self.img_tf}, num_classes, is_training)
 
     def setup(self, is_training, num_classes):
         (self.feed('data')
